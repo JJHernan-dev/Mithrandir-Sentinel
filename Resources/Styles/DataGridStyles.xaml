@@ -1,0 +1,31 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- DataGrid Style -->
+    <Style TargetType="DataGrid">
+
+        <Setter Property="Background" Value="#1E293B"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="#334155"/>
+        <Setter Property="RowBackground" Value="#1E293B"/>
+        <Setter Property="AlternatingRowBackground" Value="#0F172A"/>
+        <Setter Property="GridLinesVisibility" Value="None"/>
+        <Setter Property="HeadersVisibility" Value="Column"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="RowHeight" Value="35"/>
+
+    </Style>
+
+    <!-- Column Header Style -->
+    <Style TargetType="DataGridColumnHeader">
+
+        <Setter Property="Background" Value="#0F172A"/>
+        <Setter Property="Foreground" Value="#94A3B8"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="BorderThickness" Value="0"/>
+
+    </Style>
+
+</ResourceDictionary>

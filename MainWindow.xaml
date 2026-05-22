@@ -1,12 +1,68 @@
-﻿<Window x:Class="Mithrandir_Sentinel.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Mithrandir_Sentinel"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+﻿<mah:MetroWindow x:Class="Mithrandir_Sentinel.MainWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 mc:Ignorable="d"
+                 Title="Mithrandir Sentinel"
+                 Height="600"
+                 Width="1000"
+                 WindowStartupLocation="CenterScreen"
+                 GlowBrush="#00FFAA"
+                 xmlns:views="clr-namespace:Mithrandir_Sentinel.Views">
+
     <Grid>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- SIDEBAR -->
+        <Border Background="#040a11"
+            Grid.Column="0">
+
+            <StackPanel Margin="20">
+
+                <!-- LOGO -->
+                <StackPanel Margin="0,10,0,40"
+                HorizontalAlignment="Center">
+                    <Image Source="/Assets/Images/logo1.png"
+               Width="190"
+               Height="172"
+               Stretch="Uniform"/>
+
+                </StackPanel>
+
+                <!-- MENU -->
+
+                <Button Content="Dashboard"
+            Height="45"
+            Margin="0,0,0,10"/>
+
+                <Button Content="Connections"
+            Height="45"
+            Margin="0,0,0,10"/>
+
+                <Button Content="Alerts"
+            Height="45"
+            Margin="0,0,0,10"/>
+
+                <Button Content="Settings"
+            Height="45"/>
+
+            </StackPanel>
+
+        </Border>
+
+        <!-- MAIN CONTENT -->
+        <Grid Grid.Column="1">
+
+            <views:DashboardView/>
+
+        </Grid>
+
     </Grid>
-</Window>
+
+</mah:MetroWindow>
