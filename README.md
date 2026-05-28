@@ -104,15 +104,15 @@ Mithrandir_Sentinel/
 
 ### Connections
 
-<img width="700" src="imgReadme/img02.PNG"/>
+<img width="700" src="imgReadme/img02.png"/>
 
 ### Alerts
 
-<img width="700" src="imgReadme/img03.PNG"/>
+<img width="700" src="imgReadme/img03.png"/>
 
 ### Settings
 
-<img width="700" src="imgReadme/img04.PNG"/>
+<img width="700" src="imgReadme/img04.png"/>
 
 
 ## Disclaimer
@@ -217,13 +217,13 @@ Mithrandir_Sentinel/
 <img width="700" src="imgReadme/img01.PNG"/>
 
 ### Conexiones
-<img width="700" src="imgReadme/img02.PNG"/>
+<img width="700" src="imgReadme/img02.png"/>
 
 ### Alertas
-<img width="700" src="imgReadme/img03.PNG"/>
+<img width="700" src="imgReadme/img03.png"/>
 
 ### Configuración
-<img width="700" src="imgReadme/img04.PNG"/>
+<img width="700" src="imgReadme/img04.png"/>
 
 ---
 
