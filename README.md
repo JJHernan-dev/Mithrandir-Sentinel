@@ -14,104 +14,106 @@
 
 # Mithrandir Sentinel
 
-Mithrandir Sentinel is a modern desktop cybersecurity monitoring application built with WPF and C#.
+Mithrandir Sentinel is a modern defensive cybersecurity monitoring tool built 
+with WPF and C#, following the MVVM architectural pattern.
 
-The project focuses on defensive security concepts, real-time TCP connection monitoring, and clean desktop architecture using the MVVM pattern.
-
----
+The application provides real-time TCP connection monitoring, threat 
+visualization, dynamic alerting, and a SOC-inspired interface built to 
+explore defensive security concepts and modern desktop engineering in depth.
 
 ## Features
 
-- Real-time TCP connection monitoring
-- Dynamic dashboard interface
-- MVVM architecture
-- Modern WPF UI using MahApps.Metro
-- Live updating DataGrid
-- Connection state visualization
-- Basic threat detection system (in progress)
-
----
+- Real-time TCP connection monitoring with live DataGrid updates
+- Dynamic cybersecurity dashboard with metric cards and telemetry panels
+- Threat detection engine with high-risk connection flagging
+- Real-time alert system with animated glow indicators
+- Search, filtering, and configurable refresh intervals
+- Persistent user settings
+- Responsive SOC-inspired UI with custom window chrome and dark aesthetic
+- MVVM architecture with shared live connection repository
 
 ## Tech Stack
 
-- C#
-- .NET 10
-- WPF
-- MVVM
-- MahApps.Metro
-- CommunityToolkit.Mvvm
+| Layer        | Technology                  |
+|--------------|-----------------------------|
+| Language     | C# / .NET 10                |
+| UI Framework | WPF                         |
+| Architecture | MVVM                        |
+| UI Libraries | MahApps.Metro               |
+| Toolkit      | CommunityToolkit.Mvvm       |
 
----
+## Getting Started
+
+**Requirements**
+- Windows 10/11
+- .NET 10 SDK
+- Visual Studio 2022+
+
+**Quick Download (for end users)**
+
+- Windows x64 executable
+- No installation required
+- Extract and run Mithrandir Sentinel.exe
+
+**Build From Source (For developers)**
+```bash
+git clone https://github.com/youruser/mithrandir-sentinel.git
+cd mithrandir-sentinel
+dotnet run
+```
 
 ## Architecture
 
-The project follows a clean MVVM-based architecture:
+The application follows MVVM to maintain clean separation of concerns 
+across all layers.
 
 ```text
-Views
-↓
-ViewModels
-↓
-Services
-↓
-Models
+Views  →  ViewModels  →  Services  →  Models / Core
 ```
 
-### Current Services
+### Core Components
 
-- `NetworkService`
-  - Retrieves active TCP connections from the system
+**NetworkService** — Retrieves active TCP connections directly from the OS.
 
-- `ThreatDetectionService`
-  - Analyzes suspicious connections and generates alerts
+**ThreatDetectionService** — Analyzes connections and generates simulated 
+defensive security alerts.
 
----
+**ConnectionRepository** — Maintains shared live connection data across views.
 
-## Current Dashboard
+**WeakReferenceMessenger** — Handles lightweight ViewModel-to-ViewModel 
+communication for real-time configuration updates.
 
-The application currently supports:
+## Project Structure
 
-- Active TCP connection monitoring
-- Real-time UI updates
-- Dynamic connection table
-- Connection state indicators
-- Dark modern UI
-
----
-
-## Planned Features
-
-- Process detection
-- IP geolocation
-- Suspicious IP detection
-- Port scan detection
-- Threat severity system
-- Export logs
-- Notifications
-- Historical monitoring
-- Connection filtering
-- SIEM-style dashboard improvements
-
----
-
-## Learning Goals
-
-This project is also part of my learning journey in:
-
-- Cybersecurity fundamentals
-- Defensive security
-- Desktop application architecture
-- WPF and MVVM
-- System and network monitoring
-- Real-time UI design
-
----
+```text
+Mithrandir_Sentinel/
+├── Assets/
+├── Core/
+├── Models/
+├── Services/
+├── ViewModels/
+├── Views/
+├── Styles/
+└── Messages/
+```
 
 ## Screenshots
 
+### Dashboard
 <img width="700" src="imgReadme/img01.PNG"/>
 
----
+### Connections
+
+<img width="700" src="imgReadme/img02.PNG"/>
+
+### Alerts
+
+<img width="700" src="imgReadme/img03.PNG"/>
+
+### Settings
+
+<img width="700" src="imgReadme/img04.PNG"/>
+
 
 ## Disclaimer
 
@@ -124,83 +126,110 @@ This project is intended for educational and defensive security purposes only.
 <details>
 <summary><strong>🇪🇸 Español (Haz clic para abrir el desplegable)</strong></summary>
 
-## Mithrandir Sentinel
+# Mithrandir Sentinel
 
-Mithrandir Sentinel es una aplicación moderna de monitoreo de ciberseguridad para escritorio, desarrollada con WPF y C#.
+Mithrandir Sentinel es una herramienta moderna de monitorización de ciberseguridad defensiva construida con WPF y C#, siguiendo el patrón arquitectónico MVVM.
 
-El proyecto se enfoca en conceptos de seguridad defensiva, monitoreo de conexiones TCP en tiempo real y una arquitectura de escritorio limpia utilizando el patrón MVVM.
+La aplicación ofrece monitorización de conexiones TCP en tiempo real, visualización de amenazas, alertas dinámicas y una interfaz inspirada en SOC desarrollada para explorar en profundidad los conceptos de seguridad defensiva y la ingeniería moderna de aplicaciones de escritorio.
+
+---
 
 ## Características
-- Monitoreo de conexiones TCP en tiempo real
-- Interfaz de panel dinámico
-- Arquitectura MVVM
-- Interfaz moderna en WPF utilizando MahApps.Metro
-- DataGrid con actualización en vivo
-- Visualización del estado de las conexiones
-- Sistema básico de detección de amenazas (en desarrollo)
 
-## Tech Stack
+- Monitorización de conexiones TCP en tiempo real con actualizaciones en vivo del DataGrid
+- Dashboard de ciberseguridad dinámico con tarjetas de métricas y paneles de telemetría
+- Motor de detección de amenazas con marcado de conexiones de alto riesgo
+- Sistema de alertas en tiempo real con indicadores de brillo animados
+- Búsqueda, filtrado e intervalos de refresco configurables
+- Configuración de usuario persistente
+- Interfaz responsive inspirada en SOC con chrome de ventana personalizado y estética oscura
+- Arquitectura MVVM con repositorio de conexiones en vivo compartido
 
-- C#
-- .NET 10
-- WPF
-- MVVM
-- MahApps.Metro
-- CommunityToolkit.Mvvm
+---
+
+## Tecnologías
+
+| Capa          | Tecnología                  |
+|---------------|-----------------------------|
+| Lenguaje      | C# / .NET 10                |
+| Framework UI  | WPF                         |
+| Arquitectura  | MVVM                        |
+| Librerías UI  | MahApps.Metro               |
+| Toolkit       | CommunityToolkit.Mvvm       |
+
+---
+
+## Primeros Pasos
+
+**Requisitos**
+- Windows 10/11
+- .NET 10 SDK
+- Visual Studio 2022+
+
+**Ejecución**
+```bash
+git clone https://github.com/youruser/mithrandir-sentinel.git
+cd mithrandir-sentinel
+dotnet run
+```
+
+---
 
 ## Arquitectura
 
-El proyecto sigue una arquitectura limpia basada en MVVM.
+La aplicación sigue el patrón MVVM para mantener una separación de responsabilidades limpia en todas las capas.
 
-```text
-Views
-↓
-ViewModels
-↓
-Services
-↓
-Models
+```
+Views  →  ViewModels  →  Services  →  Models / Core
 ```
 
-## Estado actual del panel
+### Componentes Principales
 
-Actualmente, la aplicación soporta:
+**NetworkService** — Obtiene las conexiones TCP activas directamente desde el sistema operativo.
 
-- Monitoreo de conexiones TCP activas
-- Actualizaciones de interfaz en tiempo real
-- Tabla dinámica de conexiones
-- Indicadores del estado de las conexiones
-- Interfaz moderna en modo oscuro
+**ThreatDetectionService** — Analiza las conexiones y genera alertas de seguridad defensiva simuladas.
 
-## Funcionalidades planificadas
-- Detección de procesos
-- Geolocalización de IP
-- Detección de IP sospechosas
-- Detección de escaneo de puertos
-- Sistema de severidad de amenazas
-- Exportación de registros
-- Notificaciones
-- Monitoreo histórico
-- Filtrado de conexiones
-- Mejoras estilo dashboard SIEM
+**ConnectionRepository** — Mantiene los datos de conexiones en vivo compartidos entre las distintas vistas.
 
-## Objetivos de aprendizaje
+**WeakReferenceMessenger** — Gestiona la comunicación ligera entre ViewModels para actualizaciones de configuración en tiempo real.
 
-Este proyecto también forma parte de mi proceso de aprendizaje en:
+---
 
-- Fundamentos de ciberseguridad
-- Seguridad defensiva
-- Arquitectura de aplicaciones de escritorio
-- WPF y MVVM
-- Monitoreo de sistemas y redes
-- Diseño de interfaces en tiempo real
+## Estructura del Proyecto
 
-## Screenshots
+```
+Mithrandir_Sentinel/
+├── Assets/
+├── Core/
+├── Models/
+├── Services/
+├── ViewModels/
+├── Views/
+├── Styles/
+└── Messages/
+```
 
+---
+
+## Capturas de Pantalla
+
+### Dashboard
 <img width="700" src="imgReadme/img01.PNG"/>
 
-## Aviso
+### Conexiones
+<img width="700" src="imgReadme/img02.PNG"/>
+
+### Alertas
+<img width="700" src="imgReadme/img03.PNG"/>
+
+### Configuración
+<img width="700" src="imgReadme/img04.PNG"/>
+
+---
+
+## Aviso Legal
 
 Este proyecto está destinado únicamente a fines educativos y de seguridad defensiva.
+
 
 </details>

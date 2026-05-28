@@ -1,0 +1,177 @@
+﻿<UserControl x:Class="Mithrandir_Sentinel.Views.AlertsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <UserControl.Resources>
+
+        <BooleanToVisibilityConverter
+            x:Key="BoolToVisibilityConverter"/>
+
+    </UserControl.Resources>
+    
+    <Grid Background="#111827">
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+            <StackPanel Margin="30">
+
+                <TextBlock Text="Security Alerts"
+                           Foreground="White"
+                           FontSize="34"
+                           FontWeight="Bold"
+                           Margin="0,0,0,30"/>
+
+                <TextBlock Text="System secure. No active alerts."
+                           Foreground="#64748B"
+                           FontSize="15"
+                           HorizontalAlignment="Center"
+                           Margin="0,40,0,0">
+
+                    <TextBlock.Style>
+
+                        <Style TargetType="TextBlock">
+
+                            <Setter Property="Visibility"
+                                    Value="Visible"/>
+
+                            <Style.Triggers>
+
+                                <DataTrigger Binding="{Binding HasAlerts}"
+                                             Value="True">
+
+                                    <Setter Property="Visibility"
+                                            Value="Collapsed"/>
+
+                                </DataTrigger>
+
+                            </Style.Triggers>
+
+                        </Style>
+
+                    </TextBlock.Style>
+
+                </TextBlock>
+
+                <ItemsControl ItemsSource="{Binding Alerts}">
+
+                    <ItemsControl.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border Background="#1E293B"
+                                    CornerRadius="12"
+                                    Padding="20"
+                                    Margin="0,0,0,15">
+
+                                <Grid>
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel>
+
+                                        <TextBlock Text="{Binding Title}"
+                                                   Foreground="White"
+                                                   FontSize="20"
+                                                   FontWeight="Bold"/>
+
+                                        <TextBlock Text="{Binding Description}"
+                                                   Foreground="#CBD5E1"
+                                                   Margin="0,10,0,0"/>
+
+                                        <TextBlock Text="{Binding ProcessName}"
+                                                   Foreground="#38BDF8"
+                                                   Margin="0,10,0,0"/>
+
+                                        <TextBlock Text="{Binding RemoteAddress}"
+                                                   Foreground="#94A3B8"
+                                                   Margin="0,5,0,0"/>
+
+                                        <TextBlock Text="{Binding Timestamp}"
+                                                   Foreground="#64748B"
+                                                   Margin="0,10,0,0"/>
+
+                                    </StackPanel>
+
+                                    <Border Grid.Column="1"
+                                            Padding="12,6"
+                                            CornerRadius="8"
+                                            VerticalAlignment="Top">
+
+                                        <Border.Style>
+
+                                            <Style TargetType="Border">
+
+                                                <Setter Property="Background"
+                                                        Value="#9A3412"/>
+
+                                                <Style.Triggers>
+
+                                                    <DataTrigger Binding="{Binding Severity}"
+                                                                 Value="High">
+
+                                                        <Setter Property="Background"
+                                                                Value="#991B1B"/>
+
+                                                    </DataTrigger>
+
+                                                </Style.Triggers>
+
+                                            </Style>
+
+                                        </Border.Style>
+
+                                        <TextBlock Text="{Binding Severity}"
+                                                   Foreground="White"
+                                                   FontWeight="Bold"/>
+
+                                    </Border>
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+
+            </StackPanel>
+
+        </ScrollViewer>
+
+        <!-- LOADING OVERLAY -->
+
+        <Grid Background="#AA0B1220"
+              Visibility="{Binding IsLoading,
+                           Converter={StaticResource BoolToVisibilityConverter}}">
+
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                <ProgressBar Width="180"
+                             Height="6"
+                             IsIndeterminate="True"
+                             Foreground="#00FFAA"
+                             Background="#1E293B"/>
+
+                <TextBlock Text="Initializing Mithrandir Sentinel..."
+                           Foreground="White"
+                           FontSize="16"
+                           Margin="0,18,0,0"
+                           HorizontalAlignment="Center"/>
+
+            </StackPanel>
+
+        </Grid>
+
+
+    </Grid>
+
+</UserControl>

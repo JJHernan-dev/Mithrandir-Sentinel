@@ -3,14 +3,13 @@ using Mithrandir_Sentinel.ViewModels;
 
 namespace Mithrandir_Sentinel.Views
 {
-    public partial class DashboardView : UserControl
+    public partial class AlertsView : UserControl
     {
-        public DashboardView()
+        public AlertsView()
         {
             InitializeComponent();
 
-            DataContext = new DashboardViewModel();
+            DataContext = new AlertsViewModel();
         }
-
     }
 }

@@ -3,163 +3,426 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <UserControl.Resources>
+
+        <BooleanToVisibilityConverter
+            x:Key="BoolToVisibilityConverter"/>
+
+    </UserControl.Resources>
 
     <Grid Background="#111827">
 
+        <Border Width="14"
+                Height="14"
+                Margin="10,0"
+                VerticalAlignment="Center"
+                CornerRadius="7"
+                Background="{Binding AlertColor}">
+
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Opacity"
+                            Value="0.3"/>
+
+                    <Style.Triggers>
+
+                        <!-- ALERT ACTIVE -->
+                        <DataTrigger Binding="{Binding Alerts}"
+                                Value="0">
+                            <Setter Property="Opacity"
+                                    Value="0"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Alerts}"
+                                Value="1">
+                            <Setter Property="Opacity"
+                                    Value="1"/>
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+
+            <Border.Effect>
+                <DropShadowEffect Color="Red"
+                                  BlurRadius="20"
+                                  ShadowDepth="0"
+                                  Opacity="0.8"/>
+            </Border.Effect>
+
+        </Border>
+
         <StackPanel Margin="30">
 
-            <TextBlock Text="Security Dashboard"
-                       Foreground="White"
-                       FontSize="32"
-                       FontWeight="Bold"/>
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                          Background="#111827">
 
-            <TextBlock Text="System monitoring overview"
-                       Foreground="#94A3B8"
-                       FontSize="16"
-                       Margin="0,10,0,30"/>
+                <StackPanel Margin="30">
 
-            <!-- Cards -->
-            <WrapPanel>
+                    <TextBlock Text="Security Dashboard"
+                               Foreground="White"
+                               FontSize="34"
+                               FontWeight="Bold"
+                               Margin="0,0,0,30"/>
 
-                <Border Width="220"
-                        Height="120"
-                        Background="#1E293B"
-                        CornerRadius="10"
-                        Margin="0,0,20,20">
+                    <UniformGrid Columns="4"
+                                 Margin="0,0,0,30">
 
-                    <StackPanel Margin="15">
 
-                        <TextBlock Text="Active Connections"
-                                   Foreground="#94A3B8"
-                                   FontSize="14"/>
 
-                        <TextBlock Text="{Binding ActiveConnections}"
-           Foreground="White"
-           FontSize="36"
-           FontWeight="Bold"
-           Margin="0,10,0,0"/>
+                        <!-- Active Connections -->
 
-                    </StackPanel>
+                        <Border Background="#1E293B"
+                                CornerRadius="12"
+                                Margin="10"
+                                Padding="20">
 
-                </Border>
+                            <StackPanel>
 
-                <Border Width="220"
-                        Height="120"
-                        Background="#1E293B"
-                        CornerRadius="10">
+                                <TextBlock Text="Active Connections"
+                                           Foreground="#94A3B8"
+                                           FontSize="16"/>
 
-                    <StackPanel Margin="15">
+                                <TextBlock Text="{Binding ActiveConnections}"
+                                           Foreground="White"
+                                           FontSize="42"
+                                           FontWeight="Bold"
+                                           Margin="0,10,0,0"/>
 
-                        <TextBlock Text="Alerts"
-                                   Foreground="#94A3B8"
-                                   FontSize="14"/>
+                            </StackPanel>
 
-                        <TextBlock Text="{Binding Alerts}"
-                                   Foreground="White"
-                                   FontSize="36"
-                                   FontWeight="Bold"
-                                   Margin="0,10,0,0"/>
+                        </Border>
 
-                    </StackPanel>
+                        <!-- Alerts -->
 
-                </Border>
+                        <Border Background="#1E293B"
+                                CornerRadius="12"
+                                Margin="10"
+                                Padding="20">
 
-            </WrapPanel>
+                            <StackPanel>
 
-            <DataGrid ItemsSource="{Binding Connections}"
-          AutoGenerateColumns="False"
-          Height="350"
-          Margin="0,20,0,0">
+                                <TextBlock Text="Security Alerts"
+                                           Foreground="#94A3B8"
+                                           FontSize="16"/>
 
-                <DataGrid.Columns>
+                                <TextBlock Text="{Binding Alerts}"
+                                           Foreground="#F87171"
+                                           FontSize="42"
+                                           FontWeight="Bold"
+                                           Margin="0,10,0,0"/>
 
-                    <DataGridTextColumn Header="Local IP"
-                            Binding="{Binding LocalAddress}"
-                            Width="*"/>
+                            </StackPanel>
 
-                    <DataGridTextColumn Header="Local Port"
-                            Binding="{Binding LocalPort}"
-                            Width="*"/>
+                        </Border>
 
-                    <DataGridTextColumn Header="Remote IP"
-                            Binding="{Binding RemoteAddress}"
-                            Width="*"/>
+                        <!-- High Risk -->
 
-                    <DataGridTextColumn Header="Remote Port"
-                            Binding="{Binding RemotePort}"
-                            Width="*"/>
+                        <Border Background="#1E293B"
+                                CornerRadius="12"
+                                Margin="10"
+                                Padding="20">
 
-                    <DataGridTemplateColumn Header="State"
-                        Width="*">
+                            <StackPanel>
 
-                        <DataGridTemplateColumn.CellTemplate>
+                                <TextBlock Text="High Risk"
+                                           Foreground="#94A3B8"
+                                           FontSize="16"/>
 
-                            <DataTemplate>
+                                <TextBlock Text="{Binding HighRiskConnections}"
+                                           Foreground="#FB7185"
+                                           FontSize="42"
+                                           FontWeight="Bold"
+                                           Margin="0,10,0,0"/>
 
-                                <Border Padding="8,4"
-                    CornerRadius="6"
-                    HorizontalAlignment="Left">
+                            </StackPanel>
+
+                        </Border>
+
+                        <!-- Processes -->
+
+                        <Border Background="#1E293B"
+                                CornerRadius="12"
+                                Margin="10"
+                                Padding="20">
+
+                            <StackPanel>
+
+                                <TextBlock Text="Processes"
+                                           Foreground="#94A3B8"
+                                           FontSize="16"/>
+
+                                <TextBlock Text="{Binding MonitoredProcesses}"
+                                           Foreground="#38BDF8"
+                                           FontSize="42"
+                                           FontWeight="Bold"
+                                           Margin="0,10,0,0"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+                    </UniformGrid>
+
+                    <Border Background="#1E293B"
+                            CornerRadius="12"
+                            Padding="25">
+
+                        <StackPanel>
+
+                            <StackPanel Orientation="Horizontal"
+                                        VerticalAlignment="Center"
+                                        Margin="0,0,0,20">
+
+                                <!-- LED INDICATOR -->
+                                <Border Width="10"
+                                        Height="10"
+                                        CornerRadius="5"
+                                        Margin="0,0,10,0"
+                                        VerticalAlignment="Center">
 
                                     <Border.Style>
-
                                         <Style TargetType="Border">
 
+                                            <!-- IDLE STATE (gris visible) -->
                                             <Setter Property="Background"
-                                Value="#334155"/>
+                                                    Value="#6B7280"/>
+                                            <Setter Property="Opacity"
+                                                    Value="0.6"/>
+
+                                            <Setter Property="RenderTransformOrigin"
+                                                    Value="0.5,0.5"/>
+                                            <Setter Property="RenderTransform">
+                                                <Setter.Value>
+                                                    <ScaleTransform ScaleX="1"
+                                                            ScaleY="1"/>
+                                                </Setter.Value>
+                                            </Setter>
 
                                             <Style.Triggers>
 
-                                                <DataTrigger Binding="{Binding State}"
-                                         Value="Established">
+                                                <!-- ACTIVE STATE -->
+                                                <DataTrigger Binding="{Binding HasHighRiskConnections}"
+                                                        Value="True">
 
+                                                    <!-- base red -->
                                                     <Setter Property="Background"
-                                        Value="#14532D"/>
+                                                            Value="#EF4444"/>
+                                                    <Setter Property="Opacity"
+                                                            Value="1"/>
 
-                                                </DataTrigger>
+                                                    <!-- glow -->
+                                                    <Setter Property="Effect">
+                                                        <Setter.Value>
+                                                            <DropShadowEffect Color="#EF4444"
+                                                                              BlurRadius="20"
+                                                                              ShadowDepth="0"
+                                                                              Opacity="0.85"/>
+                                                        </Setter.Value>
+                                                    </Setter>
 
-                                                <DataTrigger Binding="{Binding State}"
-                                         Value="TimeWait">
+                                                    <!-- animation -->
+                                                    <DataTrigger.EnterActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard RepeatBehavior="Forever">
 
-                                                    <Setter Property="Background"
-                                        Value="#9A3412"/>
+                                                                <!-- pulse brightness -->
+                                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                                 From="0.6"
+                                                                                 To="1"
+                                                                                 Duration="0:0:0.25"
+                                                                                 AutoReverse="True"/>
 
-                                                </DataTrigger>
+                                                                <!-- heartbeat scale -->
+                                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                                                 From="1"
+                                                                                 To="1.4"
+                                                                                 Duration="0:0:0.25"
+                                                                                 AutoReverse="True"/>
 
-                                                <DataTrigger Binding="{Binding State}"
-                                         Value="CloseWait">
+                                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                                                 From="1"
+                                                                                 To="1.4"
+                                                                                 Duration="0:0:0.25"
+                                                                                 AutoReverse="True"/>
 
-                                                    <Setter Property="Background"
-                                        Value="#991B1B"/>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </DataTrigger.EnterActions>
 
                                                 </DataTrigger>
 
                                             </Style.Triggers>
 
                                         </Style>
-
                                     </Border.Style>
-
-                                    <TextBlock Text="{Binding State}"
-                           Foreground="White"
-                           FontWeight="SemiBold"/>
 
                                 </Border>
 
-                            </DataTemplate>
+                                <!-- TEXT -->
+                                <TextBlock Text="Recent High Risk Connections"
+                                           Foreground="White"
+                                           FontSize="24"
+                                           FontWeight="Bold"
+                                           VerticalAlignment="Center"/>
 
-                        </DataGridTemplateColumn.CellTemplate>
+                            </StackPanel>
 
-                    </DataGridTemplateColumn>
 
-                </DataGrid.Columns>
 
-            </DataGrid>
+                            <TextBlock Text="No high-risk connections detected."
+                                       Foreground="#64748B"
+                                       FontSize="13"
+                                       HorizontalAlignment="Center"
+                                       Margin="10">
+
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility"
+                                                Value="Collapsed"/>
+
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding HasHighRiskConnections}"
+                                                    Value="False">
+                                                <Setter Property="Visibility"
+                                                        Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+
+                            </TextBlock>
+
+                            <TextBlock Text="High-risk activity detected."
+                                       Foreground="#EF4444"
+                                       FontWeight="SemiBold"
+                                       FontSize="13"
+                                       HorizontalAlignment="Center"
+                                       Margin="10">
+
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility"
+                                                Value="Collapsed"/>
+
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding HasHighRiskConnections}"
+                                                    Value="True">
+                                                <Setter Property="Visibility"
+                                                        Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+
+                            </TextBlock>
+
+                            <ScrollViewer MaxHeight="240"
+                                          VerticalScrollBarVisibility="Auto">
+                                <ItemsControl ItemsSource="{Binding RecentHighRiskConnections}">
+
+                                    <ItemsControl.ItemTemplate>
+
+                                        <DataTemplate>
+
+                                            <Border Background="#111827"
+                                                    CornerRadius="8"
+                                                    Padding="15"
+                                                    Margin="0,0,0,10">
+
+                                                <Grid>
+
+                                                    <Grid.ColumnDefinitions>
+
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <StackPanel>
+
+                                                        <TextBlock Text="{Binding ProcessName}"
+                                                                   Foreground="White"
+                                                                   FontSize="16"
+                                                                   FontWeight="Bold"/>
+
+                                                        <TextBlock Text="{Binding RemoteAddress}"
+                                                                   Foreground="#94A3B8"
+                                                                   Margin="0,5,0,0"/>
+
+                                                    </StackPanel>
+
+                                                    <Border Grid.Column="1"
+                                                            Background="#991B1B"
+                                                            CornerRadius="6"
+                                                            Padding="10,5"
+                                                            VerticalAlignment="Center">
+
+                                                        <TextBlock Text="{Binding RiskLevel}"
+                                                                   Foreground="White"
+                                                                   FontWeight="Bold"/>
+
+                                                    </Border>
+
+                                                </Grid>
+
+                                            </Border>
+
+                                        </DataTemplate>
+
+                                    </ItemsControl.ItemTemplate>
+
+                                </ItemsControl>
+
+                            </ScrollViewer>
+
+                        </StackPanel>
+
+                    </Border>
+
+                </StackPanel>
+
+            </ScrollViewer>
+
+
+
 
         </StackPanel>
 
-        
-        
+
+        <!-- CONTENT -->
+
+        <!-- LOADING OVERLAY -->
+
+        <Grid Background="#AA0B1220"
+              Visibility="{Binding IsLoading,
+                           Converter={StaticResource BoolToVisibilityConverter}}">
+
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                <ProgressBar Width="180"
+                             Height="6"
+                             IsIndeterminate="True"
+                             Foreground="#00FFAA"
+                             Background="#1E293B"/>
+
+                <TextBlock Text="Initializing Mithrandir Sentinel..."
+                           Foreground="White"
+                           FontSize="16"
+                           Margin="0,18,0,0"
+                           HorizontalAlignment="Center"/>
+
+            </StackPanel>
+
+        </Grid>
+
+
     </Grid>
+
+
 
 </UserControl>

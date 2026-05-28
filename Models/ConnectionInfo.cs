@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace Mithrandir_Sentinel.Models
 {
     public class ConnectionInfo
     {
-
         public string LocalAddress { get; set; } = string.Empty;
 
         public int LocalPort { get; set; }
@@ -17,5 +13,10 @@ namespace Mithrandir_Sentinel.Models
 
         public string State { get; set; } = string.Empty;
 
+        public int ProcessId { get; set; }
+
+        public string ProcessName { get; set; } = string.Empty;
+
+        public string RiskLevel { get; set; } = "Low";
     }
 }
