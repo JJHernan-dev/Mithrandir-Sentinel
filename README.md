@@ -44,16 +44,18 @@ explore defensive security concepts and modern desktop engineering in depth.
 
 ## Getting Started
 
-**Requirements**
-- Windows 10/11
-- .NET 10 SDK
-- Visual Studio 2022+
+**Quick Download**
 
-**Quick Download (for end users)**
+Download the latest Windows release of Mithrandir Sentinel:
 
-- Windows x64 executable
+➡️ [Download Mithrandir Sentinel v0.3.0](https://github.com/JJHernan-dev/Mithrandir-Sentinel/releases/tag/v0.3.0)
+
+### Requirements
+
+- Windows 10 / 11 (64-bit)
 - No installation required
-- Extract and run Mithrandir Sentinel.exe
+- Extract the `.zip` file
+- Run `Mithrandir-Sentinel.exe`
 
 **Build From Source (For developers)**
 ```bash
@@ -126,13 +128,13 @@ This project is intended for educational and defensive security purposes only.
 <details>
 <summary><strong>🇪🇸 Español (Haz clic para abrir el desplegable)</strong></summary>
 
+---
+
 # Mithrandir Sentinel
 
 Mithrandir Sentinel es una herramienta moderna de monitorización de ciberseguridad defensiva construida con WPF y C#, siguiendo el patrón arquitectónico MVVM.
 
 La aplicación ofrece monitorización de conexiones TCP en tiempo real, visualización de amenazas, alertas dinámicas y una interfaz inspirada en SOC desarrollada para explorar en profundidad los conceptos de seguridad defensiva y la ingeniería moderna de aplicaciones de escritorio.
-
----
 
 ## Características
 
@@ -145,8 +147,6 @@ La aplicación ofrece monitorización de conexiones TCP en tiempo real, visualiz
 - Interfaz responsive inspirada en SOC con chrome de ventana personalizado y estética oscura
 - Arquitectura MVVM con repositorio de conexiones en vivo compartido
 
----
-
 ## Tecnologías
 
 | Capa          | Tecnología                  |
@@ -157,23 +157,28 @@ La aplicación ofrece monitorización de conexiones TCP en tiempo real, visualiz
 | Librerías UI  | MahApps.Metro               |
 | Toolkit       | CommunityToolkit.Mvvm       |
 
----
-
 ## Primeros Pasos
 
-**Requisitos**
-- Windows 10/11
-- .NET 10 SDK
-- Visual Studio 2022+
+**Descarga Rápida**
 
-**Ejecución**
+Descarga la última versión para Windows de Mithrandir Sentinel:
+
+➡️ [Descargar Mithrandir Sentinel v0.3.0](https://github.com/JJHernan-dev/Mithrandir-Sentinel/releases/tag/v0.3.0)
+
+### Requisitos
+
+- Windows 10 / 11 (64-bit)
+- No requiere instalación
+- Extrae el archivo `.zip`
+- Ejecuta `Mithrandir-Sentinel.exe`
+
+**Compilar desde el código fuente (para desarrolladores)**
+
 ```bash
 git clone https://github.com/youruser/mithrandir-sentinel.git
 cd mithrandir-sentinel
 dotnet run
 ```
-
----
 
 ## Arquitectura
 
@@ -193,8 +198,6 @@ Views  →  ViewModels  →  Services  →  Models / Core
 
 **WeakReferenceMessenger** — Gestiona la comunicación ligera entre ViewModels para actualizaciones de configuración en tiempo real.
 
----
-
 ## Estructura del Proyecto
 
 ```
@@ -209,8 +212,6 @@ Mithrandir_Sentinel/
 └── Messages/
 ```
 
----
-
 ## Capturas de Pantalla
 
 ### Dashboard
@@ -224,8 +225,6 @@ Mithrandir_Sentinel/
 
 ### Configuración
 <img width="700" src="imgReadme/img04.png"/>
-
----
 
 ## Aviso Legal
 
