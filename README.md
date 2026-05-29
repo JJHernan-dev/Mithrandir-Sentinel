@@ -41,7 +41,6 @@ explore defensive security concepts and modern desktop engineering in depth.
 | Language     | C# / .NET 10                |
 | UI Framework | WPF                         |
 | Architecture | MVVM                        |
-| UI Libraries | MahApps.Metro               |
 | Toolkit      | CommunityToolkit.Mvvm       |
 
 ## Getting Started
@@ -156,7 +155,6 @@ La aplicación ofrece monitorización de conexiones TCP en tiempo real, visualiz
 | Lenguaje      | C# / .NET 10                |
 | Framework UI  | WPF                         |
 | Arquitectura  | MVVM                        |
-| Librerías UI  | MahApps.Metro               |
 | Toolkit       | CommunityToolkit.Mvvm       |
 
 ## Primeros Pasos
